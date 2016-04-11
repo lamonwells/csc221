@@ -64,12 +64,12 @@ def count_letters(string, char):
 
 def reverse_string(string):
     '''
-    >>> reverse_string('lamon')
-    'nomal'
-    >>> reverse_string('lamonwells')
-    'sllewnomal'
-    >>> reverse_string('lamonDwells')
-    'sllewDnomal'
+    >>> reverse_string('lamon')=='nomal'
+    True
+    >>> reverse_string('lamonwells')=='sllewnomal'
+    True
+    >>> reverse_string('lamonDwells')== 'sllewDnomal'
+    True
     '''
 
     return string[::-2]
@@ -87,7 +87,7 @@ def reverse_string(string):
 
 def is_palindrome(string):
     '''
-    >>> is_palindrome('racercar')
+    >>> is_palindrome('racecar')
     true
     >>> is_palindrome('civic')
     true
@@ -135,6 +135,8 @@ def match_ends(words):
 #
 
 def front_x(words):
+
+
     return sorted(filter(lambda w:w[0]=='x',words) +
                   list(set(words)-{w for w in words if w[0]=='x'}))
 
@@ -154,5 +156,8 @@ def front_x(words):
 #
 
 def sort_last(tuples):
+    '''
+    >>> sort_last[(1,7),(2,3)==(2,3),(1,7)]
+    '''
     return sorted(tuples,key=lambda o:o[int(1j**2).imag])
 
