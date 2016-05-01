@@ -23,6 +23,7 @@
 # using both the `unittest` and `doctest` modules.
 
 def is_leap_year(year):
+
     '''
     >>> is_leap_year(1996)
     True
@@ -33,12 +34,12 @@ def is_leap_year(year):
     >>> is_leap_year(2004)
     True
      '''
-    if year % 400==0:
+    if year % 400 == 0:
         return True
 
-    if year % 100==0:
+    elif year % 100 == 0:
         return False
-    if year % 4==0:
+    elif year % 4 == 0:
         return True
     else:
         return False
@@ -79,13 +80,37 @@ def is_leap_year(year):
 # A complete set of unit tests for this function shall be included,
 # using both the `unittest` and `doctest` modules.
 def to_rna(dna):
-    inverse = { G : C,
-                C : G,
-                T : A,
-                A : T}
+    return ','.join(complement[nucleotide] for nucleotide in dna )
+    '''
+    >>>to_rna('G')
+    'C'
+    >>>to_rna('g')
+    'c'
+    >>>to_rna('C')
+    'G'
+    >>>to_rna('T')
+    'A'
+    >>>to_rna('t')
+    'a'
+    >>>to_rna('A')
+    'U'
+    >>>to_rna('a')
+    'u'
+    >>>to_rna('aaa')
+    'u,u,u'
+    '''
 
-    return (inverse[nucleotide] for nucleotide in dna )
+complement = {'G' :'C',
+              'C' :'G',
+              'T' :'A',
+              'A' :'U',
+              'g' :'c',
+              'c' :'g',
+              't' :'a',
+              'a' :'u'}
 
+
+#Problem 3
 #Implement a function `rna_count(dna)` that takes one parameter, `dna`
 #(a string), and returns a dictionary with the RNA nucleotides (`'A'`,
 #`'C'`, `'G'`, and `'U'`) as keys and the number of occurances of each
@@ -94,11 +119,22 @@ def to_rna(dna):
 
 def rna_count(dna):
     d={}
-    ' count apperance of letters'
-    for l in dna:
+    # count apperance of letters'
+    for w in dna:
         d[w] = dna.count(w)
-
-
-
-
-
+    '''
+    >>>rna_count('A' : 1)
+    >>>rna_count('GG' : 2)
+    >>>rna_count('UU' : 2)
+    >>>rna_count('CCC' : 3)
+    >>>rna_count('a' : 1)
+    >>>rna_count('gg' : 2)
+    >>>rna_count('ccc' : 3)
+    >>>rna_count('uu' : 2)
+    >>>rna_count('AGUCAGUC') rna_count({'A : 2, 'C': 2, 'G' : 2, U : 2 } )
+    >>>rna_count('agucaguc') rna_count({'A : 2, 'C': 2, 'G' : 2, U : 2 } )
+    '''
+    for k in sorted(d):
+        print(k + ': ' + str(d[k]))
+dna = 'ACTGCUactgcu'
+rna_count(dna)
